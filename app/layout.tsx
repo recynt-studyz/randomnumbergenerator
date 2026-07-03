@@ -33,11 +33,13 @@ export const metadata: Metadata = {
     url: 'https://randomnumbergenerator.app',
     siteName: 'randomnumbergenerator.app',
     type: 'website',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Random Number Generator & Random Tools' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Random Number Generator — Free Random Tools',
     description: 'Free random number generator, coin flip, dice roller, password generator and more. No signup.',
+    images: ['/twitter-image'],
   },
   robots: { index: true, follow: true },
   verification: { google: 'PLACEHOLDER_GOOGLE_SITE_VERIFICATION' },

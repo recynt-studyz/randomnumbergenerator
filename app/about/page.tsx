@@ -6,11 +6,51 @@ export const metadata: Metadata = {
   title: 'About — randomnumbergenerator.app',
   description: 'About randomnumbergenerator.app. Free random number generator, coin flip, dice roller, password generator, name picker and more.',
   alternates: { canonical: 'https://randomnumbergenerator.app/about' },
+  robots: { index: true, follow: true },
+}
+
+const faqs = [
+  { q: 'What is randomnumbergenerator.app?', a: 'randomnumbergenerator.app is a free suite of random tools including a random number generator, coin flip, dice roller, password generator, name picker, random color generator, spin wheel, random date generator, random letter generator, yes/no generator, and team generator.' },
+  { q: 'Are all the tools free to use?', a: 'Yes. Every tool on randomnumbergenerator.app is completely free with no signup, no account, and no usage limits.' },
+  { q: 'How does the randomization work?', a: 'All tools use JavaScript\'s Math.random() function for randomization. The password generator uses the cryptographically secure crypto.getRandomValues() API. All calculations run entirely in your browser — nothing is sent to a server.' },
+  { q: 'Is my data private?', a: 'Yes. All randomization happens locally in your browser. We do not collect, transmit, or store any data you enter into our tools. Your inputs never leave your device.' },
+  { q: 'What browsers are supported?', a: 'randomnumbergenerator.app works in all modern browsers including Chrome, Firefox, Safari, and Edge on both desktop and mobile devices. No plugins or downloads are required.' },
+]
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+}
+
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'randomnumbergenerator.app',
+  url: 'https://randomnumbergenerator.app',
+  description: 'Free suite of random tools: random number generator, coin flip, dice roller, password generator, name picker, and more.',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+}
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Use randomnumbergenerator.app',
+  step: [
+    { '@type': 'HowToStep', name: 'Choose a tool', text: 'Use the navigation bar at the top to select any of the 11 free random tools: number, coin flip, dice, password, name picker, color, spin wheel, date, letter, yes/no, or teams.' },
+    { '@type': 'HowToStep', name: 'Generate instantly', text: 'Each tool is ready to use immediately — no signup required. Results appear instantly in your browser.' },
+    { '@type': 'HowToStep', name: 'Customize your results', text: 'Every tool has options for customization. Generate multiple results, set ranges, adjust settings, and copy or download your output.' },
+  ],
 }
 
 export default function AboutPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema).replace(/</g, '\\u003c') }} />
       <section className="relative bg-cover bg-center bg-no-repeat min-h-[200px]" style={{ backgroundImage: "url('/herobgrng.webp')" }}>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10">

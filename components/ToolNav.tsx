@@ -49,7 +49,7 @@ export default function ToolNav() {
                 aria-current={isActive ? 'page' : undefined}
                 className={`px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                   isActive
-                    ? 'bg-white text-violet-700 shadow-sm'
+                    ? 'bg-white text-[#7c3aed] shadow-sm'
                     : 'bg-white/20 text-white hover:bg-white/30'
                 }`}
               >

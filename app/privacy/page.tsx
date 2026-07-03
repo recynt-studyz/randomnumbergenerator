@@ -6,11 +6,51 @@ export const metadata: Metadata = {
   title: 'Privacy Policy — randomnumbergenerator.app',
   description: 'Privacy policy for randomnumbergenerator.app. We do not collect personal data. All randomization runs in your browser.',
   alternates: { canonical: 'https://randomnumbergenerator.app/privacy' },
+  robots: { index: true, follow: true },
+}
+
+const faqs = [
+  { q: 'What data does randomnumbergenerator.app collect?', a: 'We do not collect any data you enter into our tools. Numbers, names, passwords, color values, and all other inputs are processed entirely in your browser and are never sent to any server.' },
+  { q: 'How is my data stored?', a: 'Certain preferences are saved in your browser\'s localStorage (dark mode, password settings, dice type, name lists). This data stays on your device and is never accessible to us or any third party.' },
+  { q: 'Does the site use cookies?', a: 'We do not set any first-party tracking cookies. Google AdSense, which provides advertising, may set cookies. You can opt out of personalized advertising through Google\'s Ad Settings.' },
+  { q: 'Is my password generation private?', a: 'Yes. The password generator uses the browser\'s built-in crypto.getRandomValues() API and runs completely in your browser. Generated passwords are never sent over the network or stored anywhere by us.' },
+  { q: 'How can I clear my saved data?', a: 'You can clear all saved preferences by clearing your browser\'s localStorage for this site. In most browsers, go to DevTools → Application → Local Storage → randomnumbergenerator.app → Clear All.' },
+]
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+}
+
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'randomnumbergenerator.app',
+  url: 'https://randomnumbergenerator.app',
+  description: 'Free random tools suite — random number generator, coin flip, dice roller, password generator and more. All tools run in your browser.',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+}
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Use randomnumbergenerator.app Privately',
+  step: [
+    { '@type': 'HowToStep', name: 'Use tools without signing up', text: 'All tools on randomnumbergenerator.app are available instantly with no account required. Simply open the site and start using any tool.' },
+    { '@type': 'HowToStep', name: 'Your inputs stay local', text: 'All calculations happen in your browser. No data you enter is transmitted to our servers — your numbers, names, passwords, and other inputs are completely private.' },
+    { '@type': 'HowToStep', name: 'Clear saved preferences', text: 'To remove any locally saved preferences (theme, settings, name lists), clear localStorage for this site in your browser\'s developer tools.' },
+  ],
 }
 
 export default function PrivacyPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema).replace(/</g, '\\u003c') }} />
       <section className="relative bg-cover bg-center bg-no-repeat min-h-[200px]" style={{ backgroundImage: "url('/herobgrng.webp')" }}>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10">

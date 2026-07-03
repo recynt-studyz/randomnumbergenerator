@@ -9,7 +9,7 @@ import Footer from '@/components/Footer'
 export const metadata: Metadata = {
   title: 'Random Number Generator — Generate Random Numbers',
   description:
-    'Generate random numbers instantly between any range. Free random number generator with multiple numbers, unique mode, decimals, and quick presets. No signup required.',
+    'Generate random numbers instantly between any range. Free random number generator with multiple numbers, unique mode, decimals and quick presets. No signup.',
   alternates: { canonical: 'https://randomnumbergenerator.app' },
   robots: { index: true, follow: true },
 }
