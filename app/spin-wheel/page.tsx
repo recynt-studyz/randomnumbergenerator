@@ -120,6 +120,56 @@ export default function SpinWheelPage() {
             </p>
           </div>
 
+          {/* How It Works */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">How Does the Spin Wheel Work?</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              The winner is determined before the visual animation begins. When you click SPIN, the tool immediately calls <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded text-violet-700 dark:text-violet-400">Math.floor(Math.random() * segments.length)</code> to select a random winning segment index. The animation is then calculated to decelerate and stop precisely on that pre-determined segment. This means the outcome is always genuinely random — the animation is purely visual feedback, not a factor in the result. You cannot influence the outcome by clicking faster or slower, and the spin duration is irrelevant to which segment wins.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              The wheel is rendered on an HTML Canvas element, with each segment drawn as a proportional arc using the Canvas 2D API. All segments are equal in size — each occupies exactly 360/n degrees, where n is the number of options — giving every segment an identical probability of winning. The deceleration animation uses a cubic-bezier easing function that mimics the natural physics of a spinning wheel slowing down, making the experience feel satisfying and authentic even though the result was already fixed from the moment you pressed SPIN.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              The optional tick sound effect (when available) uses the Web Audio API to generate a click sound each time the wheel pointer crosses a segment boundary during the spin. The number of ticks increases as the wheel accelerates and decreases as it decelerates, giving an audio cue that reinforces the visual sense of momentum and the dramatic slowdown toward the final result.
+            </p>
+          </div>
+
+          {/* Worked Example */}
+          <div className="rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800 px-6 py-5 mb-10">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Worked Example: Staff Recognition Draw</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              A restaurant manager runs a weekly draw to select which staff member earns a bonus hour off. All 8 staff members are added to the wheel — one name per segment. Every Friday after the shift, the manager opens the wheel on the POS screen where all staff can see it and presses SPIN. The wheel animates and decelerates onto a name. The result is completely uninfluenceable: even the manager pressing the button cannot predict which name will win.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              Because all staff watch the spin together on the same screen, there is no question of the result being manipulated after the fact. The wheel is transparent in a way that a private draw or a random number generator used out of sight could never be. The visual theatre of the spin — the rapid rotation, the gradual slowdown, the pointer landing on a name — also makes the draw a small weekly event that the team looks forward to.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Other uses: a classroom teacher spins to pick which student presents next, with the remove-winner option ensuring every student presents before anyone goes twice; a podcast records a live giveaway draw using the wheel on screen share; a group of friends spins a wheel of restaurant names to settle a dinner debate; a developer uses the wheel during a retrospective to randomly select which team member speaks first; a game show host uses it to assign contestants to teams. The spin wheel&apos;s combination of genuine randomness and visual spectacle makes it uniquely suitable for situations where the audience is as important as the outcome.
+            </p>
+          </div>
+
+          {/* Key Factors */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Key Factors in Spin Wheel Selection</h2>
+            <ul className="space-y-3">
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Pre-determined outcome</strong> — The winning segment is selected randomly before the animation starts, not after it stops. This means the result is genuinely random and cannot be influenced by any aspect of the visual spin — not speed, not timing, not the number of rotations.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Equal segment probability</strong> — Every segment on the wheel is the same size regardless of label length, meaning every option has an exactly equal probability of winning. Adding more options to the wheel reduces each individual option&apos;s probability proportionally and uniformly.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Remove-winner mode</strong> — When enabled, the winning segment is permanently removed from the wheel after each spin. This converts the wheel into a sequential random selector — ideal for giveaways with multiple prizes, assigning tasks from a list, or working through a group one member at a time.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Number of segments</strong> — The wheel supports up to 20 segments. With more segments, each label occupies a smaller arc and the text is automatically scaled. For best readability, shorter labels work better with more segments; longer labels are clearest on wheels with fewer options.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Visual transparency for group settings</strong> — Unlike a number generator used privately, a spin wheel displayed on a shared screen makes the random selection process visible to everyone simultaneously. This shared experience is what distinguishes the spin wheel as a tool for social and group decision-making.
+              </li>
+            </ul>
+          </div>
+
           <div className="pb-10">
             <FAQ questions={faqs} />
           </div>

@@ -120,6 +120,56 @@ export default function CoinFlipPage() {
             </p>
           </div>
 
+          {/* How It Works */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">How Does a Digital Coin Flip Work?</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              A digital coin flip reduces a 50/50 probability event to a single expression: <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded text-violet-700 dark:text-violet-400">Math.random() &lt; 0.5</code>. JavaScript&apos;s Math.random() generates a number uniformly distributed between 0 and 1. If the value falls below 0.5 the result is Heads; at or above 0.5 it is Tails. Because the distribution is perfectly uniform, each outcome has an exact 50% probability — neither side is favoured by even a fraction of a percent.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              A digital flip is actually statistically fairer than tossing a physical coin. Research has shown that physical coins can land on the same side they started slightly more often due to the physics of spinning and catching — a bias of approximately 51% toward the starting face. There is also the influence of grip strength, release technique, and catching angle. A digital flip has none of these variables: the outcome is drawn from a mathematically uniform distribution with no physical bias whatsoever, every single time.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Each flip is also fully independent of all previous flips. The common misconception known as the gambler&apos;s fallacy — the belief that after a run of Heads, Tails becomes &quot;due&quot; — does not apply here. Every single flip has exactly the same 50/50 probability regardless of history. The statistics panel on this tool lets you observe this in practice: over many flips, the ratio of Heads to Tails converges toward 50:50, but any individual flip remains completely unpredictable.
+            </p>
+          </div>
+
+          {/* Worked Example */}
+          <div className="rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800 px-6 py-5 mb-10">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Worked Example: Making Decisions with a Coin Flip</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              Two friends cannot agree on who pays for lunch. Rather than a prolonged negotiation, they open the coin flip tool on one phone and both watch the screen together. One calls Heads, the other Tails, and they press Flip. The result is instant, completely unbiased, and impossible for either person to influence or dispute — unlike a physical coin where the flipper could, consciously or not, apply a consistent technique that slightly skews outcomes.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              Sports referees and tournament organisers use digital coin flips for exactly this reason: transparency and verifiability. When both parties can see the same screen and agree on the tool in advance, there is no room for claims of unfairness. The streak counter adds a further layer of transparency — if observers see that the previous 5 flips were all Heads, they can confirm from the statistics panel that this is simply a normal statistical run, not evidence of bias.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Other common uses: a game night host flips repeatedly to determine seating order for a 6-player board game; a project manager flips to decide which of two equally viable prototypes to build first; a teacher uses it to assign students to debate positions; a developer uses repeated flips to manually test that an A/B variant assignment is working correctly. In every case, a coin flip delivers a decision that all parties accept because the process is visibly and demonstrably fair.
+            </p>
+          </div>
+
+          {/* Key Factors */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Key Factors in Virtual Coin Flipping</h2>
+            <ul className="space-y-3">
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">True 50/50 probability</strong> — Unlike physical coins which carry minor mechanical biases from manufacturing and use, a digital flip using Math.random() produces an exact 50% probability for each outcome on every flip. The fairness is mathematical, not mechanical, and never degrades with repeated use.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Statistical independence</strong> — Each flip is entirely independent of all previous flips. A long run of Heads does not increase the probability of Tails on the next flip. Understanding this independence is key to using coin flip results correctly and avoiding the gambler&apos;s fallacy.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Flip history and statistics</strong> — The running count of Heads and Tails, percentage breakdown, and current streak let you observe the law of large numbers in action: over many flips, results converge toward 50/50, even though any individual flip remains unpredictable. This makes the tool useful for teaching probability concepts as well as making decisions.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Accessibility and convenience</strong> — A digital coin flip is available on any device with a browser, requires no physical coin, works silently in any setting, and produces an unambiguous result with no possibility of the coin rolling away or landing on its edge.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Shared viewing and transparency</strong> — Because the flip happens on screen, all parties can watch simultaneously and verify the result. This shared visibility makes digital coin flips more trustworthy in group settings than a flip performed out of sight of the other party.
+              </li>
+            </ul>
+          </div>
+
           <div className="pb-10">
             <FAQ questions={faqs} />
           </div>

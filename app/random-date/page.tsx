@@ -120,6 +120,56 @@ export default function RandomDatePage() {
             </p>
           </div>
 
+          {/* How It Works */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">How Are Random Dates Generated?</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              Dates in JavaScript are stored internally as Unix timestamps — the number of milliseconds elapsed since January 1, 1970 at midnight UTC. This means any date can be represented as a single large integer. To generate a random date within a range, the tool converts both the start and end dates to their timestamp values, then applies: <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded text-violet-700 dark:text-violet-400">start + Math.random() * (end - start)</code>, producing a random timestamp within that interval. This timestamp is then converted back to a human-readable date.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              This approach automatically handles all the complexities of calendar arithmetic: month lengths (28, 29, 30, and 31 days), leap years, and the irregular distribution of days across months. Because the randomness operates on the raw timestamp rather than on individual year/month/day components, every day within the range has an exactly equal probability of being selected — February 29th in a leap year is just as likely as any other day proportionally, without any special-case code.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Each generated date is augmented with supplementary information: the day of the week (Monday through Sunday), the number of days between the generated date and today (past or future), the ordinal day of the year (1–366), and the ISO week number. These details are computed using standard JavaScript Date methods and are useful for a wide range of applications from data analysis to creative writing to scheduling.
+            </p>
+          </div>
+
+          {/* Worked Example */}
+          <div className="rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800 px-6 py-5 mb-10">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Worked Example: Historical Novel Plot Timeline</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              A novelist is writing a story set between 1920 and 1945 and wants her major plot events to fall on dates that feel organic and historically grounded rather than artificially round numbers. She opens the date generator, sets the start date to January 1, 1920 and the end date to September 2, 1945, increases the count to 20, and generates her plot point dates. The tool instantly produces 20 random dates spread across the era, complete with days of the week.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              She downloads the list as a text file and uses it as the backbone of her timeline. One date falls on a Sunday in July 1931 — she builds a pivotal scene around a church meeting that occurs on that day. Another falls on a Tuesday in March 1938 — she cross-references it with actual historical events and finds it is days before a major news event, which she weaves into the plot. The random dates create constraints that push her creative decisions in directions she would never have chosen deliberately.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Other use cases: a software developer generates random dates to populate a test database with realistic-looking records; a teacher creates quiz questions using random historical dates; a researcher selects random audit dates across a fiscal year for a compliance review; a game designer uses random dates to seed procedurally generated in-game calendars; a family picks a random date for a surprise outing by letting the tool choose from a range of upcoming weekends. The date generator removes the burden of arbitrary choice and replaces it with genuine, defensible randomness.
+            </p>
+          </div>
+
+          {/* Key Factors */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Key Factors in Random Date Generation</h2>
+            <ul className="space-y-3">
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Date range selection</strong> — The start and end dates define the complete pool of possible outputs. The range can span days, months, years, or centuries. Using a narrower range increases the probability of any specific date being selected; a wider range spreads probability evenly across a larger interval.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Automatic leap year and calendar handling</strong> — Because randomness operates on Unix timestamps rather than individual date components, leap years and month-length differences are handled automatically and correctly. There is no risk of generating invalid dates like February 30th or November 31st.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Supplementary date information</strong> — Every generated date includes the day of the week, days from today, day of the year, and week number. This context turns a bare date into immediately useful information for scheduling, storytelling, historical research, and data generation.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Multiple date generation</strong> — Generating up to 100 dates at once is essential for bulk use cases like populating test databases, creating randomized schedules, or producing the large date sets needed for statistical analysis. The list can be sorted, copied, or downloaded as a plain text file.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Quick presets</strong> — The preset buttons (Random Birthday, Historical Date, Future Date, Day This Year) make it fast to set up common ranges without manually entering dates. Each preset covers a different temporal scope, from historical exploration to near-future planning.
+              </li>
+            </ul>
+          </div>
+
           <div className="pb-10">
             <FAQ questions={faqs} />
           </div>

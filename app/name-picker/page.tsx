@@ -120,6 +120,56 @@ export default function NamePickerPage() {
             </p>
           </div>
 
+          {/* How It Works */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">How Does Random Name Selection Work?</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              The name picker selects from your list using <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded text-violet-700 dark:text-violet-400">Math.floor(Math.random() * names.length)</code>, which produces a uniformly distributed random index. Every name in the list has an exactly equal probability of being selected on each pick — a probability of 1/n, where n is the number of remaining names. There is no weighting, no recency bias, and no hidden logic favouring or excluding any entry.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              When the &quot;Remove picked names&quot; mode is enabled, the tool implements sequential random selection without replacement — statistically equivalent to drawing names from a hat and setting each drawn slip aside. After each pick, the selected name is removed from the pool and the remaining names are redistributed with equal probability. This guarantees that every name will eventually be selected exactly once before any name repeats, which is not guaranteed when drawing with replacement.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              The tool accepts names one per line or comma-separated, auto-detecting the format. Names are trimmed and deduplicated automatically so that accidental duplicates in a pasted list do not skew the probability toward any particular entry. Your list persists in browser localStorage between sessions, meaning you can close the tab and return without re-entering your names.
+            </p>
+          </div>
+
+          {/* Worked Example */}
+          <div className="rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800 px-6 py-5 mb-10">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Worked Example: Fair Project Assignment</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              A manager needs to assign 6 team members to 3 projects fairly, with 2 people per project. She enters all 6 names into the picker, enables &quot;Remove picked names,&quot; and sets the count to 2. She clicks Pick — the tool randomly selects 2 names for Project A and removes them from the pool. She clicks Pick again and gets 2 names for Project B. The final 2 remaining names go to Project C. The entire process took under 30 seconds and produced a verifiably random, fully unbiased result that no one on the team can dispute.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              This kind of sequential elimination is important not just for fairness but for perception of fairness. When team members see that the tool was used openly and that names were removed as they were picked, they understand that the assignment was genuinely random — not influenced by the manager&apos;s preferences. The tool acts as a neutral third party in decisions that might otherwise generate resentment.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Other uses: a teacher calls on students for class participation by picking names one at a time, ensuring every student is called before anyone is called twice; a podcast host randomly selects a listener question from submitted names; a prize draw organizer picks 3 winners from 200 submitted names, removing each winner before drawing the next to ensure no one wins twice; a sports league draws team matchups for a tournament bracket by picking pairs of team names sequentially.
+            </p>
+          </div>
+
+          {/* Key Factors */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Key Factors in Random Name Picking</h2>
+            <ul className="space-y-3">
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">List preparation</strong> — The quality of the pick depends on the quality of the list. Each name should appear exactly once. The tool automatically trims whitespace and handles both line-separated and comma-separated formats, making it easy to paste directly from a spreadsheet or document.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">With vs without replacement</strong> — Picking with replacement (the default) allows the same name to appear multiple times across picks — appropriate for independent random selections. Picking without replacement (Remove picked names) ensures each name is selected at most once — appropriate for sequential assignments, prize draws, or working through a complete list.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Picking multiple names at once</strong> — Setting the count above 1 draws multiple names simultaneously from the same pool. This is useful for assigning groups, selecting multiple winners in a single step, or forming pairs from a list without picking the same person for both slots.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Transparency and open use</strong> — The impact of random name selection is greatest when performed openly. Showing the tool on a shared screen during a meeting or class eliminates any suspicion of bias and establishes trust in the outcome among all participants.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Persistent lists across sessions</strong> — Because your name list is saved in your browser, you can build and maintain lists over time — adding new names as people join, removing names as they leave — without starting from scratch each session.
+              </li>
+            </ul>
+          </div>
+
           <div className="pb-10">
             <FAQ questions={faqs} />
           </div>

@@ -137,6 +137,56 @@ export default function Home() {
             </p>
           </div>
 
+          {/* How It Works */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">How Does a Random Number Generator Work?</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              JavaScript&apos;s <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded text-violet-700 dark:text-violet-400">Math.random()</code> function produces a floating-point number between 0 (inclusive) and 1 (exclusive) using a pseudo-random number generator algorithm — typically a variant of xorshift128+ in modern browsers like Chrome and Firefox. To generate a whole number within your chosen range, the tool applies the formula <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded text-violet-700 dark:text-violet-400">Math.floor(Math.random() * (max - min + 1)) + min</code>, which scales and shifts the 0–1 output precisely into your specified range.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              The term &quot;pseudo-random&quot; means the numbers are produced by a deterministic mathematical algorithm rather than a physical entropy source such as radioactive decay or atmospheric noise. The algorithm is seeded with an unpredictable value — typically derived from the system clock combined with hardware timing events — making each sequence appear statistically random. For games, giveaways, statistical sampling, classroom selection, and the vast majority of everyday tasks, pseudo-random numbers are completely indistinguishable from truly random ones in practice.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              All generation happens entirely in your browser with zero server involvement. Results appear in under a millisecond because no network round-trip is required. Critically, each result is also independent: past outputs have absolutely no influence on future ones. This mirrors a fair physical die — rolling a 6 does not change the probability of rolling a 6 on the next throw. That statistical independence is what makes this tool reliable for any application requiring genuine, unbiased fairness.
+            </p>
+          </div>
+
+          {/* Worked Example */}
+          <div className="rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800 px-6 py-5 mb-10">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Worked Example: Classroom Student Selection</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              A teacher needs to randomly select students for 30-second presentations. Her class has 28 students numbered 1–28 on her seating chart. She sets the minimum to 1 and the maximum to 28, enables &quot;Unique numbers only&quot; with a count of 28, and clicks Generate. The tool instantly produces a randomized sequence of every number from 1 to 28 — the entire class in a random order with no repeats.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              The process is fully transparent: every student can see the generator and verify that the selection is genuinely random. There is no favoritism, no unconscious bias toward students near the front row, and no memory of who was called on last week. The fairness is mathematically guaranteed — not merely asserted — and can be demonstrated to the whole class in seconds.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Other practical uses: a raffle organizer selects 5 winning ticket numbers from 1–500 for a charity prize draw; a researcher generates 100 unique participant IDs for a blind study; a board game designer creates randomized map terrain values using decimal output; a developer populates a test database with realistic random prices between 9.99 and 999.99. In every case the guarantee is the same — a statistically fair, unbiased, and instantly verifiable result produced entirely within the browser.
+            </p>
+          </div>
+
+          {/* Key Factors */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Key Factors in Random Number Generation</h2>
+            <ul className="space-y-3">
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Range selection</strong> — The minimum and maximum values define the complete pool of possible outputs. A narrower range concentrates probability on fewer values; a wider range spreads it evenly across more. Both negative numbers and decimal boundaries are fully supported, enabling use cases from temperature simulation to financial modelling.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Integer vs decimal output</strong> — Whole numbers suit most everyday uses: picking winners, selecting list items, simulating dice. Decimal output with up to 10 decimal places suits scientific applications, probability simulations, or any task requiring continuous random values rather than discrete whole numbers.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Unique numbers only</strong> — When generating multiple numbers, enabling this mode ensures no value appears more than once in the output. It is essential for prize draws, generating shuffled permutations, or any scenario where duplicates would be unfair or statistically invalid.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Generating multiple numbers at once</strong> — Producing up to 1,000 numbers simultaneously suits bulk tasks: building random datasets, shuffling ordered lists, running Monte Carlo simulations, or creating large volumes of test data without tedious manual repetition.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Pseudorandom vs cryptographic randomness</strong> — Math.random() is ideal for games, decisions, and general-purpose sampling. For security-critical work such as generating passwords or encryption keys, this site switches to crypto.getRandomValues() — drawing from the operating system&apos;s hardware-backed entropy pool for output that is genuinely and verifiably unpredictable.
+              </li>
+            </ul>
+          </div>
+
           <div className="pb-10">
             <FAQ questions={faqs} />
           </div>

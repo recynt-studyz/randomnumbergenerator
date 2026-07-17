@@ -120,6 +120,56 @@ export default function RandomLetterPage() {
             </p>
           </div>
 
+          {/* How It Works */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">How Are Random Letters Selected?</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              The generator builds a character pool based on your settings — the full alphabet (A–Z), vowels only (A, E, I, O, U), or consonants only — then applies <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded text-violet-700 dark:text-violet-400">Math.floor(Math.random() * pool.length)</code> to select a random index. Because every index in the pool is equally likely, every letter in your selected subset has an identical probability of being chosen. For the full 26-letter alphabet, each letter has a 1-in-26 chance (approximately 3.85%) on every draw.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              This equal-probability distribution is intentional but worth understanding: it differs significantly from the actual frequency of letters in natural English text. In written English, &quot;E&quot; appears roughly 13% of the time while &quot;Z&quot; appears less than 0.1% of the time — a 130-fold difference. For most word game and creative uses, equal probability is the right choice. However, if you want a distribution that mirrors natural English — for Scrabble practice or language learning exercises — keep this difference in mind when interpreting results.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              The exclusion feature lets you remove specific letters from the pool entirely. When you exclude the letter &quot;Q&quot;, for example, the generator rebuilds the pool without it, and the remaining 25 letters each get an equal 1-in-25 chance. Exclusions persist across multiple generations in the same session, making it easy to simulate game scenarios where certain letters have already been used or are unavailable.
+            </p>
+          </div>
+
+          {/* Worked Example */}
+          <div className="rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800 px-6 py-5 mb-10">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Worked Example: Scrabble Practice Sessions</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              A competitive Scrabble player wants to practice forming words under realistic conditions. In Scrabble, each player draws 7 tiles from a bag containing 100 tiles distributed according to the game&apos;s specific frequency weighting (12 Es, 9 As, 1 Z, 1 Q, etc.). She uses the random letter generator set to &quot;How many: 7&quot; to quickly simulate a tile draw, giving her 7 letters to practice word formation. She generates a new hand each time, practicing her anagram skills across dozens of simulated draws in a single session.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              She also uses the exclusion feature to practice handling difficult letter combinations. By excluding all vowels except &quot;I&quot; and generating 7-letter hands, she forces herself to practice forming words with minimal vowels — one of the most common challenging situations in competitive play. The exclusion feature makes the generator a flexible training tool that can target specific weaknesses rather than providing only generic random practice.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Other uses: a classroom teacher generates random letters for alphabet learning activities with young children, producing one letter at a time in large-format display mode; a creative writing teacher uses random letters as the starting point for free-association writing prompts; a word game host generates the round&apos;s target letter for games like &quot;categories&quot; where players must name items in a category starting with that letter; a developer tests string-processing code with random letter inputs; a child plays a guessing game using the NATO phonetic alphabet to identify the letter from its code word (Alpha, Bravo, Charlie...).
+            </p>
+          </div>
+
+          {/* Key Factors */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Key Factors in Random Letter Generation</h2>
+            <ul className="space-y-3">
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Alphabet subset selection</strong> — Choosing between the full alphabet, vowels only, or consonants only significantly changes the character of the results. Vowels-only mode is useful for phonics exercises; consonants-only mode generates the kind of challenging letter combinations common in advanced word games.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Letter exclusions</strong> — Removing specific letters from the pool simulates real-world constraints: tiles already placed in a Scrabble game, letters already guessed in a word-guessing game, or specific letters you want to practice avoiding. Exclusions apply immediately and persist for the session.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Multiple letter generation</strong> — Generating up to 100 letters simultaneously is useful for batch operations: creating random letter grids, simulating tile draws, generating random acronyms, or populating educational worksheets with random letter exercises.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Case control</strong> — Uppercase output is clearest for classroom and game settings where letters need to be immediately legible. Lowercase is standard for linguistic exercises. Mixed case is useful when generating random letter sequences that need to look like natural text strings.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">NATO phonetic alphabet</strong> — Displaying the NATO phonetic word for each generated letter (Alpha, Bravo, Charlie...) transforms the tool into a communication training aid. It is useful for aviation, military, emergency services, and anyone who needs to spell names or codes clearly over voice channels where letter confusion could cause errors.
+              </li>
+            </ul>
+          </div>
+
           <div className="pb-10">
             <FAQ questions={faqs} />
           </div>

@@ -120,6 +120,56 @@ export default function PasswordGeneratorPage() {
             </p>
           </div>
 
+          {/* How It Works */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Why Cryptographic Randomness Matters for Passwords</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              Most random number generators — including JavaScript&apos;s Math.random() — are pseudo-random: fast and statistically uniform, but ultimately deterministic and theoretically predictable given knowledge of the algorithm and its seed. For passwords, that predictability is a critical vulnerability. This generator instead uses the Web Cryptography API&apos;s <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded text-violet-700 dark:text-violet-400">crypto.getRandomValues()</code> function, which draws entropy from the operating system&apos;s hardware-level random number generator — the same source used by security software, VPNs, and TLS certificate generation. The output is genuinely unpredictable, even to someone with full access to the browser&apos;s source code.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              Password strength is measured in entropy bits: the number of bits required to represent every possible password of a given length and character set, calculated as <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded text-violet-700 dark:text-violet-400">log2(charset_size ^ length)</code>. A 12-character password using only lowercase letters has approximately 56 bits of entropy. Adding uppercase, numbers, and symbols expands the character set from 26 to 95, raising the same 12-character password to approximately 79 bits — over 4 million times stronger. Length and character variety together determine how long a brute-force attack would take; at 80+ bits of entropy, that time exceeds the age of the observable universe with current hardware.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              All generation runs locally in your browser with no server involvement. Generated passwords are displayed on screen and never transmitted over the network — the server hosting this site has no knowledge of any password you create here. There are no logs, no databases, and no server-side processing of any kind. Your password exists only on your screen, for only as long as you choose to keep it there.
+            </p>
+          </div>
+
+          {/* Worked Example */}
+          <div className="rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800 px-6 py-5 mb-10">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Worked Example: Securing a Business Account</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              A small business owner needs a new password for her accounting software. She opens the password generator, sets the length to 20 characters, and enables all four character sets: uppercase, lowercase, numbers, and symbols. The generator produces a password such as <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded">Xr7$mN2@qLpK9#vZ8!cA</code> with approximately 130 bits of entropy. At that strength, a system attempting one billion guesses per second would take longer than the age of the observable universe to exhaust all possibilities through brute force.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              She clicks Copy and pastes the password directly into her password manager — she never types it into a document, email, or chat. Because the password was generated fresh for this account and is stored only in her password manager, it is unique to this service. If the accounting software ever suffers a data breach, no other account of hers is at risk. This combination — long, random, unique per service, stored in a password manager — is the gold standard of modern password hygiene.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              The bulk generation option is useful when setting up multiple accounts at once. A system administrator configuring 12 new service accounts can generate 12 unique passwords simultaneously, copy the batch output, and distribute them through an encrypted channel. Each password is generated with a completely independent call to crypto.getRandomValues(), so there is no statistical relationship between them that could be exploited to compromise multiple accounts from a single sample.
+            </p>
+          </div>
+
+          {/* Key Factors */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Key Factors in Strong Password Generation</h2>
+            <ul className="space-y-3">
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Length — the single most important factor</strong> — Each additional character multiplies the number of possible passwords by the size of the character set. Going from 12 to 16 characters raises entropy by roughly 26 bits — a factor of 67 million more possible combinations — making length the highest-impact variable in password security.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Character variety</strong> — Including all four character types (uppercase, lowercase, numbers, symbols) expands the character set from 26 to 95. A 16-character password using all four types has approximately 99 bits of entropy compared to 75 bits with lowercase only — a 16-billion-fold increase in strength.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Avoiding dictionary words and patterns</strong> — Attackers run dictionary attacks and pattern-matching rules before attempting brute force. A randomly generated password contains no words, no keyboard patterns, and no personal information, making these attacks completely ineffective regardless of how sophisticated the attack toolkit is.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Uniqueness per service</strong> — Reusing a password across multiple accounts means a breach at one service exposes all others. Random generation makes it trivial to create a unique, strong password for every account, since you never need to remember it — a password manager handles storage and recall.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Password manager storage</strong> — The only practical way to use long, random, unique passwords for every account is to store them in a reputable password manager. The manager encrypts and recalls all passwords so you only need to remember one strong master passphrase.
+              </li>
+            </ul>
+          </div>
+
           <div className="pb-10">
             <FAQ questions={faqs} />
           </div>

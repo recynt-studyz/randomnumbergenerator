@@ -100,21 +100,44 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Third-party advertising</h2>
               <p className="text-sm leading-relaxed">
-                This site displays advertisements served by Google AdSense (publisher ID: ca-pub-8792838105001561). Google&apos;s use of advertising cookies enables it and its partners to serve ads based on your visits to our site and other sites on the Internet. For more information about how Google uses data, visit Google&apos;s Privacy &amp; Terms.
+                This site displays advertisements served by Google AdSense (publisher ID: ca-pub-5035661017594256). Google&apos;s use of advertising cookies enables it and its partners to serve ads based on your visits to our site and other sites on the Internet. For more information about how Google uses data, visit Google&apos;s Privacy &amp; Terms page.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Google Analytics</h2>
+              <p className="text-sm leading-relaxed mb-3">
+                This site uses Google Analytics 4 (GA4) to collect anonymous usage statistics — specifically, which pages are visited, how long visitors spend on each page, and general geographic region (country level). GA4 does not collect any of your tool inputs: the numbers you generate, names you enter, passwords you create, or any other data you provide to the tools on this site.
+              </p>
+              <p className="text-sm leading-relaxed">
+                GA4 data is anonymized and aggregated. We use it solely to understand which tools are most useful, identify pages that may have technical problems, and guide decisions about which new tools to build. You can opt out of Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" className="text-violet-600 dark:text-violet-400 hover:underline" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Password security</h2>
+              <p className="text-sm leading-relaxed mb-3">
+                Our password generator uses the Web Cryptography API&apos;s crypto.getRandomValues() function — not Math.random() — and runs entirely in your browser. This function draws entropy from the operating system&apos;s hardware random number generator, producing output that is cryptographically unpredictable. It is the same randomness source used by security software, TLS certificate generation, and operating system key generation.
+              </p>
               <p className="text-sm leading-relaxed">
-                Our password generator uses the Web Cryptography API (crypto.getRandomValues()) and runs entirely in your browser. Generated passwords are never transmitted over the network and are never stored anywhere. We strongly recommend saving generated passwords in a reputable password manager.
+                Generated passwords are displayed on screen only. They are never transmitted over the network, never stored in our systems, and never logged anywhere. The only copy of your generated password is on your screen. We strongly recommend saving generated passwords in a reputable password manager (such as Bitwarden, 1Password, or your browser&apos;s built-in password manager) immediately after generation.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-3">GDPR and CCPA</h2>
+              <p className="text-sm leading-relaxed mb-3">
+                For users in the European Economic Area (EEA), the United Kingdom, and California, the following applies: We do not sell your personal data. We do not collect personal data through our tools — all randomization runs locally in your browser and no tool inputs are transmitted to us. The only personal data that may be processed is standard web server access logs (IP address, browser type, referrer) retained by our hosting provider for a limited period for security purposes, and analytics data collected by Google Analytics as described above.
+              </p>
+              <p className="text-sm leading-relaxed">
+                Under GDPR, our lawful basis for processing analytics data is legitimate interest (understanding how our free tools are used to improve them). Under CCPA, California residents have the right to know what data is collected and to opt out of sale of personal information — we do not sell personal information. If you have questions about your data rights under applicable law, contact us using the link in the footer.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Contact</h2>
               <p className="text-sm leading-relaxed">
-                If you have questions about this privacy policy, use the Contact link in the footer to reach us.
+                If you have questions about this privacy policy or your data rights, use the Contact link in the footer to reach us. We aim to respond to all privacy-related inquiries within 5 business days.
               </p>
             </section>
           </div>

@@ -120,6 +120,56 @@ export default function DiceRollerPage() {
             </p>
           </div>
 
+          {/* How It Works */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">How Are Dice Rolls Simulated Digitally?</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              Each die roll is computed with a single expression: <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded text-violet-700 dark:text-violet-400">Math.floor(Math.random() * sides) + 1</code>. For a d20 this generates a uniformly distributed integer between 1 and 20; for a d6, between 1 and 6. Because Math.random() produces values with a perfectly uniform distribution, every face has an identical probability of appearing — exactly 1/sides — on every single roll, with no exceptions.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              Digital dice are measurably fairer than physical dice in several ways. Physical dice wear over time: edges and corners gradually round down, and the plastic or resin density inside the die can shift, creating subtle biases toward certain faces. Precision casino dice are engineered to strict tolerances to minimise this, but standard gaming dice carry small, measurable biases. A digital dice roller has none of these physical imperfections — the probability distribution remains perfectly uniform for every roll, on every die type, indefinitely.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              When rolling multiple dice simultaneously, the tool calls the formula independently for each die, producing truly independent results. Rolling 3d6 executes three completely separate Math.random() calls. The individual results and their sum are displayed together, matching the information you would get from rolling three physical dice on a table and reading them simultaneously.
+            </p>
+          </div>
+
+          {/* Worked Example */}
+          <div className="rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800 px-6 py-5 mb-10">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Worked Example: Online D&amp;D Campaign</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              A Dungeons &amp; Dragons group plays their campaign over a video call. During character creation, each player needs to roll 4d6 and drop the lowest result for each ability score — a standard method for generating ability score arrays. A player selects d6, sets the count to 4, and clicks Roll. The tool shows all four individual results (for example: 5, 3, 6, 4) and the total. The player discards the lowest result (3) and records the remaining sum of 15 for Strength.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              The persistent roll history at the bottom of the tool keeps a transparent log of every roll in the session. In online play, this is critical: when all players are on separate screens with no shared physical table, the history log acts as a verifiable record that results have not been manipulated between rolls. The game master and all players can review the complete session history at any point.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Beyond tabletop RPGs: a probability teacher uses repeated d6 rolls to demonstrate bell-curve distributions to students; a board game designer stress-tests dice mechanics by rolling thousands of virtual dice to verify that results match theoretical expectations; a family uses the d20 to assign numbered dinner choices; a statistician uses d100 rolls to generate random percentages for a simulation model. The dice roller&apos;s flexibility — seven die types and up to ten dice simultaneously — covers nearly every tabletop and statistical use case without any physical equipment.
+            </p>
+          </div>
+
+          {/* Key Factors */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Key Factors in Digital Dice Rolling</h2>
+            <ul className="space-y-3">
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Die type selection</strong> — The seven supported types (d4, d6, d8, d10, d12, d20, d100) cover the full standard set used in tabletop RPGs, wargames, and probability exercises. Each type produces a perfectly uniform distribution across all its faces on every roll.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Number of dice and bell curves</strong> — Rolling multiple dice simultaneously generates a sum that follows a bell-curve distribution rather than a flat one. Rolling 2d6 makes 7 the most common result because there are more face combinations that produce it — a key property exploited deliberately in many game designs to make middle outcomes more frequent.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Advantage and disadvantage</strong> — Many RPG systems require rolling twice and keeping the higher (advantage) or lower (disadvantage) result. The D&amp;D Quick Rolls presets handle these mechanics directly, eliminating the manual step of comparing two independent rolls.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Roll history transparency</strong> — The persistent session history lets players and game masters review every roll. This is especially valuable in online play where physical dice are not visible to all participants and trust in the rolling process needs to be maintained across screens.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">No physical degradation</strong> — Physical dice vary in fairness based on manufacturing precision and degrade with use. Digital dice use a mathematically perfect uniform distribution that never wears out, making every session statistically equivalent to using brand-new precision casino dice.
+              </li>
+            </ul>
+          </div>
+
           <div className="pb-10">
             <FAQ questions={faqs} />
           </div>

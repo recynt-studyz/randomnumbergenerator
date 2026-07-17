@@ -120,6 +120,56 @@ export default function TeamGeneratorPage() {
             </p>
           </div>
 
+          {/* How It Works */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">How Does Random Team Generation Work?</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              The team generator uses the Fisher-Yates shuffle algorithm — widely considered the gold standard for unbiased random shuffling — to randomize the order of all participant names before distributing them into teams. The Fisher-Yates algorithm works by iterating through the list from the last element to the first, swapping each element with a randomly selected element at or before its current position. This produces a uniformly random permutation: every possible ordering of the names is equally likely, with no bias toward any particular arrangement.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              A naive shuffle — such as sorting by a random value assigned to each element — produces biased results because some permutations are systematically more likely than others due to the way comparison-based sorts handle equal values. Fisher-Yates avoids this entirely by operating directly on indices rather than through comparison. The result is that the team assignments are provably fair: every possible way of dividing your participants into the specified number of teams is equally probable.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              After shuffling, participants are distributed into teams sequentially from the shuffled list. For n participants and k teams, the first n mod k teams receive one extra member, with the remainder distributed as evenly as possible. For example, 23 participants divided into 4 teams produces teams of 6, 6, 6, and 5. This balancing algorithm minimises the maximum size difference between teams to at most one person.
+            </p>
+          </div>
+
+          {/* Worked Example */}
+          <div className="rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800 px-6 py-5 mb-10">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Worked Example: PE Class Basketball Tournament</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              A PE teacher has 23 students for a basketball tournament and wants to form 4 teams. She enters all 23 student names into the text area (pasted from her class roster spreadsheet), selects &quot;4 teams,&quot; and clicks Generate Teams. The tool shuffles all 23 names using Fisher-Yates and distributes them as 6-6-6-5 across four team cards. The entire process takes under 10 seconds from paste to result.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              The critical benefit is the perception of fairness as much as the fairness itself. When students see the name list pasted publicly and the generator run in front of the class, they understand immediately that team composition was not influenced by the teacher&apos;s preferences or by social dynamics among the students. This is especially important in settings where team selection has historically been a source of social anxiety — random assignment removes that entirely. She renames the four default team labels to match the tournament bracket and copies each team&apos;s roster for printing.
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Other uses: a hackathon organiser divides 40 participants into 8 teams of 5 for a coding competition; a corporate trainer forms random breakout groups for a workshop, ensuring people who usually sit together end up in different groups; a trivia night host forms teams from a list of 30 walk-in contestants; a military unit uses the team generator to assign patrol pairs randomly; a book club divides its 12 members into 3 discussion groups for a multi-text session. In each case, randomness produces fairer, less socially fraught team compositions than any human-driven selection process would.
+            </p>
+          </div>
+
+          {/* Key Factors */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Key Factors in Random Team Selection</h2>
+            <ul className="space-y-3">
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Fisher-Yates algorithm</strong> — The shuffle algorithm used here is provably unbiased: every possible permutation of the participant list is equally likely. This is not true of naive shuffle approaches like &quot;sort by random value,&quot; which produce subtly skewed distributions that favour certain arrangements over others.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Number of teams vs members per team</strong> — Two input modes accommodate different planning approaches. &quot;Number of teams&quot; mode is useful when you know how many teams you need (e.g. for a tournament bracket). &quot;Members per team&quot; mode is useful when you know the right group size (e.g. 4 people per breakout group) and want to generate as many groups as needed automatically.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Handling uneven distributions</strong> — When participants do not divide evenly into equal teams, the generator distributes the remainder as fairly as possible, with some teams having one more member than others. The maximum size difference between any two teams is always exactly one person.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Regenerating without re-entering names</strong> — Clicking Regenerate reshuffles the same name list into a completely new random arrangement without requiring you to re-enter or repaste the names. This makes it fast to produce multiple candidate team arrangements if the first result doesn&apos;t meet some practical constraint.
+              </li>
+              <li className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Custom team names and copying</strong> — Default team labels (Team 1, Team 2, etc.) can be edited inline to match your activity — bracket names, project titles, colour names, or any other labels. Individual team rosters and the complete multi-team output can be copied to clipboard for pasting into documents, messages, or slides.
+              </li>
+            </ul>
+          </div>
+
           <div className="pb-10">
             <FAQ questions={faqs} />
           </div>
